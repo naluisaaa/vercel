@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 
 const supabase = createClient('https://xykdmkcmlqeotehelvmy.supabase.co', 'sb_publishable__AcS_cmtpzpgl4EG3xdB7g_BgmPujfw')
 
@@ -7,8 +7,12 @@ async function cadastrarPaciente(nome, celular, email) {
         .from('pacientes')
         .insert([{ nome, celular, email }])
     
-    if (error) console.error('Erro:', error)
-    else alert('Paciente cadastrado com sucesso!')
+    if (error) {
+        console.error('Erro:', error)
+        alert('Erro ao salvar: ' + error.message)
+    } else {
+        alert('Paciente cadastrado com sucesso!')
+    }
 }
 
 window.onload = () => {
